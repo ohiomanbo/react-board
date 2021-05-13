@@ -3,6 +3,7 @@ import "./App.scss";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
+import ListPage from "./pages/board/ListPage";
 import WritePage from "./pages/board/WritePage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
@@ -36,8 +37,7 @@ function App() {
   return (
     <div>
       <Navigation />
-      <Route path="/" exact component={HomePage} />
-      <Route path="/login/:id" exact component={LoginPage} />
+      <Route path="/" exact component={ListPage} />
       <Route path="/write" exact component={WritePage} />
       <Footer />
     </div>

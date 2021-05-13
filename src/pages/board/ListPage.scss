@@ -1,0 +1,13 @@
+.content {
+  border: 1px solid black;
+  padding: 10px;
+  height: 100px;
+  margin: 20px;
+
+  // 양 끝 정렬하기 위함. display를 통해 item을 구분하기 위해서 content안에 div를 이용해서 구분
+  display: flex;
+  justify-content: space-between;
+
+  //세로 중앙 정렬
+  align-items: center;
+}
