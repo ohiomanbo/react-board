@@ -34,6 +34,7 @@ const Title = styled.h1`
 //모든 페이지에 header,footer가 있다고 가정했으므로 Route 바깥에 작성
 // 라우터는 SPA로 페이지는 하나에, 내용물(객체)를 바꿔치기함
 function App() {
+  const test = "master-branch";
   return (
     <div>
       <Navigation />
