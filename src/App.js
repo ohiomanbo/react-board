@@ -1,12 +1,5 @@
-import { Route } from "react-router";
 import "./App.scss";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Navigation from "./components/Navigation";
 import ListPage from "./pages/board/ListPage";
-import WritePage from "./pages/board/WritePage";
-import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage";
 
 // useRef (디자인)
 // dom 변경할 때 사용
@@ -34,13 +27,9 @@ const Title = styled.h1`
 //모든 페이지에 header,footer가 있다고 가정했으므로 Route 바깥에 작성
 // 라우터는 SPA로 페이지는 하나에, 내용물(객체)를 바꿔치기함
 function App() {
-  const test = "master-branch";
   return (
     <div>
-      <Navigation />
-      <Route path="/" exact component={ListPage} />
-      <Route path="/write" exact component={WritePage} />
-      <Footer />
+      <ListPage />
     </div>
   );
 }
