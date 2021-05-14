@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import "./ListPage.scss";
 
 const ListPage = () => {
   const [id, setId] = useState(5);
   const [post, setPost] = useState({
-    id: "",
+    id: 0,
     title: "",
     content: "",
   });
@@ -36,7 +36,7 @@ const ListPage = () => {
     e.preventDefault(); // form tag가 하려는 액션을 중지시켜야함. <- Button의 type을 button으로 안하고 submit으로 할 경우, form 태그에 onSubmit 함수 걸어주고 새로고침 방지 시키면 됨
     // Listpage의 setPosts에 제목, 본문을 담은 object를 넣음
     console.log("post before change id", post);
-    setPost({ ...post, id: id }); // 왜 첫 호출 때 안들어가지??
+    setPost({ ...post, id: id }); // 왜 첫 호출 때 안들어가지?? -> setState를 한다고 바로 렌더링 되지 않는 다고 함. 그럼 어떻게 해결해야 될까?(강제로 렌더링시키기x)
     console.log("post after change id", post);
     setId((prev) => prev + 1);
 

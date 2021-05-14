@@ -1,4 +1,7 @@
+import { useState } from "react";
 import "./App.scss";
+import Bottom from "./components/Nav/Bottom";
+import Top from "./components/Nav/Top";
 import ListPage from "./pages/board/ListPage";
 
 // useRef (디자인)
@@ -28,8 +31,10 @@ const Title = styled.h1`
 // 라우터는 SPA로 페이지는 하나에, 내용물(객체)를 바꿔치기함
 function App() {
   return (
-    <div>
-      <ListPage />
+    <div className="container">
+      <h1>최상단 화면</h1>
+      <Top />
+      <Bottom />
     </div>
   );
 }
