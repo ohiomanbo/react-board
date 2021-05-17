@@ -1,13 +1,15 @@
 // 액션 정의
-export const increase = () => ({ type: "INCREMENT" });
-export const decrease = () => ({ type: "DECREMENT" });
+export const writeitem = () => ({ type: "WRITEITEM" });
+export const removeitem = () => ({ type: "REMOVEITEM" });
 export const data = (username) => ({ type: "setUserName", payload: username }); // payload에 data를 담도록 해서 initState에도 등록해주면, 다른 파일에서 함수 호출 할때 data 넘기기도 가능
 
 // 초기 상태
-const initState = {
-  username: "ssar",
-  number: 0,
-};
+const initState = [
+  { id: 1, title: "제목1", content: "내용1" },
+  { id: 2, title: "제목2", content: "내용2" },
+  { id: 3, title: "제목3", content: "내용3" },
+  { id: 4, title: "제목4", content: "내용4" },
+];
 
 // 리듀서 - 액션의 결과를 걸러내는 역할
 const reducer = (state = initState, action) => {

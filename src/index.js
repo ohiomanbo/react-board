@@ -1,29 +1,32 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import * as serviceWorker from "./serviceWorker";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "./modules";
+// import logger from 'redux-logger';
+import { composeWithDevTools } from "redux-devtools-extension";
+import ReduxThunk from "redux-thunk";
 import { BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { createStore } from "redux";
-import reducer from "./store";
-import { Provider } from "react-redux";
 
-const store = createStore(reducer);
+const store = createStore(
+  rootReducer,
+  // logger 를 사용하는 경우, logger가 가장 마지막에 와야합니다.
+  composeWithDevTools(applyMiddleware(ReduxThunk))
+); // 여러개의 미들웨어를 적용 할 수 있습니다.
 
-// 라우팅 하기 위해서 BrowserRouter로 감쌈
 ReactDOM.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <App />
     </Provider>
-  </React.StrictMode>,
-  document.getElementById("root") // 어디에 그릴지 정하는 것. public에서 inex.html에서 root란걸 찾음. 결국 열리는 파일은 index.html이고 index.js가 <App/>의 리턴 값을 렌더하는 것
+  </BrowserRouter>,
+  document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();

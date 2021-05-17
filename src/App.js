@@ -1,17 +1,24 @@
-import "./App.scss";
-import Bottom from "./components/Nav/Bottom";
-import Top from "./components/Nav/Top";
+import React from "react";
+import { Container } from "react-bootstrap";
+import { Route } from "react-router-dom";
+import Header from "./components/Header";
+import HomePage from "./pages/HomePage";
+import SignInPage from "./pages/SignInPage";
+import SignUpPage from "./pages/SignUpPage";
+import BoardPage from "./pages/BoardPage";
 
-//모든 페이지에 header,footer가 있다고 가정했으므로 Route 바깥에 작성
-// 라우터는 SPA로 페이지는 하나에, 내용물(객체)를 바꿔치기함
 function App() {
   return (
-    <div className="container">
-      <h1>최상단 화면</h1>
-      <Top />
-      <Bottom />
+    <div>
+      <Header />
+      <Container>
+        <Route path="/" exact={true} component={HomePage} />
+        <Route path="/sign-in" exact={true} component={SignInPage} />
+        <Route path="/sign-up" exact={true} component={SignUpPage} />
+        <Route path="/board" exact={true} component={BoardPage} />
+      </Container>
     </div>
   );
 }
-// /logn/:id에 있는 id의 값을 로그인 페이지에서 match.params로 받기 가능
+
 export default App;
