@@ -7,6 +7,7 @@ import { boardSelectRow, deleteItem, writeItem } from '../modules/boardForm';
 import WritePage from '../pages/WritePage';
 
 function BoardContainer() {
+
     let [input, setInput] = useState({
         boardId: '0',
         boardTitle: '',
@@ -16,6 +17,7 @@ function BoardContainer() {
     const dispatch = useDispatch();
 
     const onWriteText = (data) => dispatch(writeItem(data));
+
     const onDeleteText = (boardId) => dispatch(deleteItem(boardId));
 
     const { selectRowData } = useSelector((state) => state.boardForm); // reducer state의 selectRowData filed 가져와 구독
@@ -51,7 +53,7 @@ function BoardContainer() {
 
     const { boards } = useSelector((state) => state.boardForm); // reducer state의 boards filed를 가져온뒤 subscribe
 
-    return (
+    return ( // 
         <div>
             <div>
                 <table className="boardList">
@@ -88,18 +90,7 @@ function BoardContainer() {
                     <Link to="/board/write">글쓰기</Link>
                 </li>
             </ul>
-            <Route
-                path="/board/write"
-                render={(props) => (
-                    <WritePage
-                        {...props}
-                        onWriteText={onWriteText}
-                        changeInput={changeInput}
-                        inputData={input}
-                        resetForm={resetForm}
-                    />
-                )}
-            />
+            
         </div>
     );
 }

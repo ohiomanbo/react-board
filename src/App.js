@@ -6,15 +6,17 @@ import HomePage from './pages/HomePage';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
 import BoardPage from './pages/BoardPage';
+import WritePage from './pages/WritePage';
 
 function App() {
     return (
         <div>
-            <Header />
+            <Header />``
             <Container>
                 <Route path="/" exact={true} component={HomePage} />
                 <Route path="/sign-in" exact={true} component={SignInPage} />
                 <Route path="/sign-up" exact={true} component={SignUpPage} />
+                <Route path="/board/write" exact = {true} component={WritePage}/>
                 <Route path="/board" exact={true} component={BoardPage} />
             </Container>
         </div>
