@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function BoardNew({ onSave, changeInput, inputData, resetForm }) {
   const saveBtnClick = (e) => {
@@ -11,7 +11,7 @@ function BoardNew({ onSave, changeInput, inputData, resetForm }) {
     <div>
       <form onSubmit={saveBtnClick}>
         <div>
-          제목 :{' '}
+          제목 :{" "}
           <input
             type="text"
             name="boardTitle"
@@ -20,7 +20,7 @@ function BoardNew({ onSave, changeInput, inputData, resetForm }) {
           />
         </div>
         <div>
-          내용 :{' '}
+          내용 :{" "}
           <input
             type="text"
             name="boardContent"
@@ -34,7 +34,7 @@ function BoardNew({ onSave, changeInput, inputData, resetForm }) {
           onChange={changeInput}
           value={inputData.boardId}
         />
-        <button type="submit">신규 게시글 저장</button>
+        <button type="submit">글 작성</button>
       </form>
     </div>
   );

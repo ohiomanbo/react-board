@@ -1,7 +1,7 @@
 // 액션 타입
-const WRITEITEM = 'WRITEITEM';
-const DELETEITEM = 'DELETEITEM';
-const MODE_SELECT_ROW = 'SELECT_ROW';
+const WRITEITEM = "WRITEITEM";
+const DELETEITEM = "DELETEITEM";
+const MODE_SELECT_ROW = "SELECT_ROW";
 
 // 액션 생성 함수
 export const writeItem = (data) => ({
@@ -19,25 +19,27 @@ export const boardSelectRow = (boardId) => ({
 });
 
 // 초기 상태
+const boards = [
+  {
+    boardId: 1,
+    boardTitle: "제목1",
+    boardContent: "내용내용내용1",
+  },
+  {
+    boardId: 2,
+    boardTitle: "제목2",
+    boardContent: "내용내용내용2",
+  },
+  {
+    boardId: 3,
+    boardTitle: "제목3",
+    boardContent: "내용내용내용3",
+  },
+];
+
 const initState = {
-  boards: [
-    {
-      boardId: 1,
-      boardTitle: '제목1',
-      boardContent: '내용내용내용1',
-    },
-    {
-      boardId: 2,
-      boardTitle: '제목2',
-      boardContent: '내용내용내용2',
-    },
-    {
-      boardId: 3,
-      boardTitle: '제목3',
-      boardContent: '내용내용내용3',
-    },
-  ],
-  lastId: 3,
+  boards: boards,
+  lastId: boards.length,
   selectRowData: {},
 };
 
@@ -45,8 +47,12 @@ const initState = {
 const boardForm = (state = initState, action) => {
   switch (action.type) {
     case WRITEITEM:
-      if (action.boardId === '') {
+      console.log("action", action);
+      console.log("action.data.boardId", action.data.boardId);
+
+      if (action.data.boardId === "0") {
         // boardItem이 없다면 신규 데이터 저장
+        console.log("empty");
         return {
           lastId: state.lastId + 1,
           boards: state.boards.concat({
@@ -57,10 +63,12 @@ const boardForm = (state = initState, action) => {
         };
       } else {
         // boardId가 있으면 기존 데이터 수정
+        console.log("unempty");
+        console.log(action.data);
         return {
           ...state,
           boards: state.boards.map((item) =>
-            item.boardId === action.data.boardId ? { ...action.data } : item,
+            item.boardId === action.data.boardId ? { ...action.data } : item
           ),
           selectRowData: {},
         };
@@ -75,7 +83,7 @@ const boardForm = (state = initState, action) => {
         // 클릭한 셀의 boardId 를 가진 state 만 찾아서 return
         ...state,
         selectRowData: state.boards.find(
-          (item) => item.boardId === action.boardId,
+          (item) => item.boardId === action.boardId
         ),
       };
     default:

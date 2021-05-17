@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Board from '../components/Board';
-import BoardNew from '../components/BoardNew';
-import { boardSelectRow, deleteItem, writeItem } from '../modules/boardForm';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Board from "../components/Board";
+import BoardNew from "../components/BoardNew";
+import { boardSelectRow, deleteItem, writeItem } from "../modules/boardForm";
 
 function BoardContainer() {
   let [input, setInput] = useState({
-    boardId: '',
-    boardTitle: '',
-    boardContent: '',
+    boardId: "0",
+    boardTitle: "",
+    boardContent: "",
   });
 
   const dispatch = useDispatch();
@@ -20,9 +20,10 @@ function BoardContainer() {
 
   // 함수 매핑
   const onRowClick = (boardId) => {
+    console.log(selectRowData);
     dispatch(boardSelectRow(boardId));
 
-    if (JSON.stringify(selectRowData) !== '{}') {
+    if (JSON.stringify(selectRowData) !== "{}") {
       setInput({
         boardId: selectRowData.boardId,
         boardTitle: selectRowData.boardTitle,
@@ -40,9 +41,9 @@ function BoardContainer() {
 
   const resetForm = () => {
     setInput({
-      boardId: '',
-      boardTitle: '',
-      boardContent: '',
+      boardId: "0",
+      boardTitle: "",
+      boardContent: "",
     });
   };
 

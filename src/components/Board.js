@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 function Board({ boardId, boardTitle, boardContent, onRemove, onRowClick }) {
   return (
-    <tr>
+    <tr align="center">
       <td onClick={() => onRowClick(boardId)}>{boardId}</td>
       <td onClick={() => onRowClick(boardId)}>{boardTitle}</td>
       <td onClick={() => onRowClick(boardId)}>{boardContent}</td>
