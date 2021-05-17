@@ -6,25 +6,25 @@ function reducer(state, action) {
       return {
         loading: false,
         data: null,
-        error: null,
+        error: null
       };
     case 'LOADING':
       return {
         loading: true,
         data: null,
-        error: null,
+        error: null
       };
     case 'SUCCESS':
       return {
         loading: false,
         data: action.data,
-        error: null,
+        error: null
       };
     case 'ERROR':
       return {
         loading: false,
         data: null,
-        error: action.error,
+        error: action.error
       };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -35,7 +35,7 @@ function useAsync(callback, deps = [], skip = false) {
   const [state, dispatch] = useReducer(reducer, {
     loading: false,
     data: null,
-    error: false,
+    error: false
   });
 
   const run = async (param) => {
@@ -50,8 +50,8 @@ function useAsync(callback, deps = [], skip = false) {
 
   const initializeAsyncState = () => {
     dispatch({ type: 'INIT' });
-    console.log('initializeErrorState');
-  };
+    console.log("initializeErrorState");
+  }
 
   useEffect(() => {
     if (skip) return;
@@ -60,7 +60,7 @@ function useAsync(callback, deps = [], skip = false) {
     // eslint-disable-next-line
   }, deps);
 
-  return { state: state, run: run, initializeAsyncState: initializeAsyncState };
+  return {state: state, run: run, initializeAsyncState: initializeAsyncState};
 }
 
 export default useAsync;

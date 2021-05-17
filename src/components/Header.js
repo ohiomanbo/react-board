@@ -1,12 +1,12 @@
-import React from 'react';
-import { Button, Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import SignInButton from './SignInButton';
-import LogOutButton from './LogOutButton';
-import { test } from '../api/test';
+import React from "react";
+import { Button, Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import SignInButton from "./SignInButton";
+import LogOutButton from "./LogOutButton";
+import { test } from "../api/test";
 
 function Header() {
-  console.log('header rendering');
+  console.log("header rendering");
   return (
     <>
       <Navbar bg="dark" variant="dark">

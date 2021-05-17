@@ -1,22 +1,40 @@
 import React from 'react';
 
-function BoardNew({ onSave, changeInput, inputData, resetForm }) {
-    const saveBtnClick = (e) => {
+const WritePage = ({ history, onWriteText, changeInput, input, resetForm }) => {
+    console.log(history);
+    const writeBtnClick = (e) => {
         e.preventDefault();
-        onSave(inputData);
+        onWriteText(input);
         resetForm();
+        history.push('/board');
     };
-
     return (
         <div>
-            <form onSubmit={saveBtnClick}>
+            <h1>aglagkljagklj</h1>
+        </div>
+    );
+};
+
+export default WritePage;
+/*
+
+console.log(history);
+    const writeBtnClick = (e) => {
+        e.preventDefault();
+        onWriteText(input);
+        resetForm();
+        history.push('/board');
+    };
+    return (
+        <div>
+            <form onSubmit={writeBtnClick}>
                 <div>
                     제목 :{' '}
                     <input
                         type="text"
                         name="boardTitle"
                         onChange={changeInput}
-                        value={inputData.boardTitle}
+                        value={input.boardTitle}
                     />
                 </div>
                 <div>
@@ -25,19 +43,17 @@ function BoardNew({ onSave, changeInput, inputData, resetForm }) {
                         type="text"
                         name="boardContent"
                         onChange={changeInput}
-                        value={inputData.boardContent}
+                        value={input.boardContent}
                     />
                 </div>
                 <input
                     type="hidden"
                     name="boardId"
                     onChange={changeInput}
-                    value={inputData.boardId}
+                    value={input.boardId}
                 />
                 <button type="submit">글 작성</button>
             </form>
         </div>
     );
-}
-
-export default BoardNew;
+    */
